@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Music Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="heading">
+      <div>
+        <h1>🎵 My Music Player</h1>
+        <p>Play local songs and manage your playlists.</p>
+      </div>
+      <button id="themeBtn" class="theme-btn">☀️ Light Mode</button>
+    </header>
+
+    <main class="container">
+      <!-- ALL SONGS -->
+      <section class="panel all-songs">
+        <div class="section-title">
+          <div>
+            <h2>All Songs</h2>
+            <p>Choose a genre or search for a song.</p>
+          </div>
+          <select id="genreFilter">
+            <option value="all">All Genres</option>
+          </select>
+        </div>
+
+        <input
+          type="search"
+          id="songSearch"
+          class="search"
+          placeholder="Search song or artist..."
+        >
+
+        <div id="songsList" class="songs-list"></div>
+      </section>
+
+      <!-- SONG CARD -->
+      <section class="panel player-panel">
+        <h2>Now Playing</h2>
+
+        <div class="song-card">
+          <img id="currentSongImg" src="" alt="Current song">
+
+          <div class="current-info">
+            <h2 id="currentSongName">No song selected</h2>
+            <p id="currentSongArtist">Select a song from All Songs</p>
+            <span id="currentSongGenre" class="genre-badge">-</span>
+          </div>
+
+          <audio id="audioPlayer" controls></audio>
+
+          <div class="controls">
+            <button id="prevBtn" class="control-btn">⏮ Previous</button>
+            <button id="playBtn" class="control-btn primary">▶ Play</button>
+            <button id="nextBtn" class="control-btn">Next ⏭</button>
+          </div>
+
+          <button id="addToPlaylistBtn" class="add-btn">
+            ➕ Add to Playlist
+          </button>
+
+          <select id="playlistSelectForAdd" class="playlist-select">
+            <option value="">Select playlist</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- PLAYLISTS -->
+      <section class="panel playlists-panel">
+        <div class="section-title">
+          <div>
+            <h2>Playlists</h2>
+            <p>Create playlists and add your favourite songs.</p>
+          </div>
+          <button id="createPlaylistBtn" class="create-btn">
+            ➕ Create Playlist
+          </button>
+        </div>
+
+        <input
+          type="search"
+          id="playlistSearch"
+          class="search"
+          placeholder="Search playlist..."
+        >
+
+        <div id="playlistsList" class="playlists-list"></div>
+
+        <div class="playlist-songs-area">
+          <h3 id="selectedPlaylistTitle">Select a playlist</h3>
+          <div id="playlistSongs" class="playlist-songs"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- CREATE PLAYLIST MODAL -->
+  <div id="playlistModal" class="modal hidden">
+    <div class="modal-content">
+      <button id="closeModalBtn" class="close-btn">×</button>
+      <h2>Create Playlist</h2>
+      <form id="playlistForm">
+        <label for="playlistName">Playlist name</label>
+        <input
+          id="playlistName"
+          type="text"
+          placeholder="e.g. Workout Songs"
+          required
+          maxlength="40"
+        >
+        <button type="submit" class="create-btn">Create Playlist</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
